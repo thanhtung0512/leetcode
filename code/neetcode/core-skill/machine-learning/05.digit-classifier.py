@@ -22,3 +22,20 @@ class Solution(nn.Module):
         )
         pass
         # Return the model's prediction to 4 decimal places
+
+model = Solution()
+
+loss_function = nn.CrossEntropyLoss()
+optimizer = torch.optim.Adam(model.parameters())
+
+epochs = 5
+for epoch in range(epochs):
+    for images, labels in train_dataloader:
+        images = images.view(images.shape[0], 784)
+
+        #TRAINING BODY
+        model_predict = model(images)
+        optimizer.zero_grad()
+        loss = loss_function(model_predict, labels)
+        loss.backward()
+        optimizer.step()
