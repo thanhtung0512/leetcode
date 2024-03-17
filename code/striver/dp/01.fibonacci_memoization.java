@@ -9,14 +9,20 @@ public class MyClass {
         }
         int fib_n_1 = 0;
         int fib_n_2 = 0;
-        if (dp[n - 1] != -1 && dp[n - 2] != -1) {
+        if (dp[n - 1] != -1) {
             fib_n_1 = dp[n - 1];
-            fib_n_2 = dp[n - 2];
         } else {
             fib_n_1 = fibonacci(n - 1);
+        }
+
+        if (dp[n - 2] != -1) {
+            fib_n_2 = dp[n - 2];
+        } else {
             fib_n_2 = fibonacci(n - 2);
         }
-        return fib_n_1 + fib_n_2;
+
+        return dp[n] = fib_n_1 + fib_n_2; 
+        // Store the result to dp[n] before return to this function
     }
 
     public static void main(String args[]) {
