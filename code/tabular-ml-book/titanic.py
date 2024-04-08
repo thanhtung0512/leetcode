@@ -13,8 +13,8 @@ titanic_path = (
 df_train_full = pd.read_csv(titanic_path + "train.csv")
 df_test = pd.read_csv(titanic_path + "test.csv")
 
-df_train_full.drop(columns=["Cabin"])
-df_test.drop(columns="Cabin")
+df_train_full.drop(columns=["Cabin"], inplace=True)
+df_test.drop(columns="Cabin", inplace=True)
 
 df_train, df_val = train_test_split(df_train_full, test_size=0.1)
 
